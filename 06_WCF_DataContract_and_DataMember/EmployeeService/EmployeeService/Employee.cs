@@ -14,7 +14,7 @@ namespace EmployeeServiceNamespace
     //By default DataContract is used, we don't need to specify it!
     //BUT: In order to use data member to include/exclude properties from wsdl(serialization),
     //we have to decorate with DataContract!!!, otherwise DataMember attribute is ignored 
-    //We could also specify the namespace that we want in the wsdl (xsd 
+    //We could also specify the namespace that we want in the wsdl (xsd http://localhost:8080/?xsd=xsd2)
     [DataContract(Namespace = "http://kejeiri.com/13/03/2016")]
     public class Employee
     {
