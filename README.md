@@ -110,6 +110,7 @@ We use IExtensibleDataObject to preserve unkown elements during serialization an
 IExtensibleDataObject interface has a risk of DoS attack. Since, the extension data is stored in memory, the attacker may flood the server with requests that contains large number of unknown elements which can lead to system out of memory and DoS.
 
 **turn off IExtensibleDataObject feature**
+
 IExtensibleDataObject feature is turned off => the deserializer will not populate the ExtensionData property.
 
 ```
@@ -130,4 +131,43 @@ public class EmployeeService : IEmployeeService
 
 
 ### Exception handling & Soap faults
+
+What happens when an exception occurs in a WCF service?/what is a SOAP fault?/How are WCF service exceptions reported to client applications?
+
+When an exception occurs in a WCF service, the service serializes the exception into a SOAP fault, and then sends the SOAP fault to the client. 
+for **security reasons**, a **generic SOAP fault** is sent to the client and **Unhandled exception details** are not included in **SOAP faults** by default.
+
+
+To include exception details in SOAP faults, enable IncludeExceptionDetailInFaults setting
+
+```
+<behaviors>
+  <serviceBehaviors>
+    <behavior name="inculdeExceptionDetails">
+      <serviceDebug includeExceptionDetailInFaults="true"/>
+    </behavior>
+  </serviceBehaviors>
+</behaviors>
+```
+
+Or 
+
+```
+[ServiceBehavior(IncludeExceptionDetailInFaults=true)]
+public class CalculatorService : ICalculatorService
+{
+    public int Divide(int Numerator, int Denominator)
+    {
+        return Numerator / Denominator;
+    }
+}
+```
+
+
+
+
+
+
+
+
 
