@@ -1,6 +1,6 @@
-# WCF - Legacy Technology
+# WCF as a legacy technology (Use Grpc instead!)
 
-## Quick remainder 
+## Quick reminder! 
 
 ### DataContract & DataMember Vs Serializable attributes
 For a complex type like Customer, Employee, Student to be serialized, the complex type can either be decorated with 
