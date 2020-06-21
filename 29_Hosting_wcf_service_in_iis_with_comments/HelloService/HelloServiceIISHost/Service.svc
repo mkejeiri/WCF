@@ -1,0 +1,11 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="HelloService.HelloService" %>
+
+<!--1. No code required to host the service: The ServiceHost directive in .svc file is responsible for creating an instance of ServiceHost when required. 
+    There is no need to write code to instantiate and start ServiceHost, as is the case with self hosting.
+2. Automatic message based activation: IIS provides automatic message based activation. This means that the service can be activated on demand. 
+    When a message arrives at the service, it then launches itself and fulfils the request. In case of self hosting, the service should always be running.
+3. Automatic process recycling: IIS provides the capability of automatic process recycling, if the process is not healthy and if it's taking a long time to service the requests. 
+    We don't get automatic process recycling with self hosting.
+
+Disadvantages:
+Hosting WCF service in IIS 5.1 and IIS 6.0 is limited to HTTP communication only. This means we can only use HTTP related bindings.-->

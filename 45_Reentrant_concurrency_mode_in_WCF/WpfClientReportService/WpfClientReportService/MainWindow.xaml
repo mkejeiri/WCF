@@ -1,0 +1,10 @@
+﻿<Window x:Class="WpfClientReportService.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="126" Width="279">
+    <Grid Margin="0,0,2,4">
+        <Button x:Name="btnProgressReport" Content="Progress Report" HorizontalAlignment="Left" VerticalAlignment="Top" Width="155" Margin="65,20,0,0" Click="btnProgressReport_Click"/>
+        <TextBox x:Name="txtProgress" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Margin="65,47,0,0"/>
+
+    </Grid>
+</Window>

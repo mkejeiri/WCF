@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeService", "EmployeeService\EmployeeService.csproj", "{520C78C8-1299-4BA1-8248-2C88C2CE692E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeeServiceHost", "EmployeeServiceHost\EmployeeServiceHost.csproj", "{7F7E68B9-4667-4C23-81E6-2BF831003FB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{520C78C8-1299-4BA1-8248-2C88C2CE692E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{520C78C8-1299-4BA1-8248-2C88C2CE692E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{520C78C8-1299-4BA1-8248-2C88C2CE692E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{520C78C8-1299-4BA1-8248-2C88C2CE692E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F7E68B9-4667-4C23-81E6-2BF831003FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F7E68B9-4667-4C23-81E6-2BF831003FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F7E68B9-4667-4C23-81E6-2BF831003FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F7E68B9-4667-4C23-81E6-2BF831003FB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
