@@ -181,7 +181,7 @@ A **WCF** service should throw only  a **FaultException** (or FaultException<T>)
 2. a **.NET exceptions** are platform specific, only understood by a .NET client, for interoperablity reason we should be throw **FaultExceptions**. [More...](18_Throwing_fault_exceptions_from_a_WCF_service)
 
 
-**create a strongly typed SOAP fault**:
+**Create a strongly typed SOAP fault**:
 1. Create a class that represents a SOAP fault. Decorate the class with DataContract attribute and the properties with DataMember attribute.
 2. In the service data contract, use FaultContractAttribute to specify which operations can throw which SOAP faults.
 3. In the service implementation create an instance of the strongly typed SOAP fault and throw it using FaultException<T>.
@@ -207,6 +207,23 @@ Implements **IServiceBehavior** interface,which has 3 methods (Validate(), AddBi
 
 
 ### Bindings in WCF	
+
+The abc's of WCF Services :
+1. Address: Where the WCF is available. 
+2. Binding: type of [binding](https://docs.microsoft.com/en-us/dotnet/framework/wcf/system-provided-bindings) (basicHttpBinding, wsHttpBinding, NetTcpBinding,...) 
+3. Contract: The service contrat (interface) that exposes available operations to a client
+
+**WCF binding**:
+
+It defines how the client need to communicate with the service, the **binding** determines which **Transport Protocol**(http, tcp, namedpipe, msmq, ...), **Message encoding** (text/xml, binary...) and **Protocols**(reliable messaging, transport support,...) to be used.
+for instance choosing **basicHttpBinding** binding would use **http** as Transport Protocol, **xml** as Message encoding and **no reliable** Protocol, whereas using **NetTcpBinding** binding would use **TCP** as as Transport Protocol, **binary** as Message encoding and we could customize **Protocols** to use.
+
+
+
+ 
+
+
+
 
 
 		
