@@ -235,6 +235,10 @@ for instance choosing **basicHttpBinding** binding would use **http** as Transpo
 **Disadvantages**:
 Hosting WCF service in IIS 5.1 and IIS 6.0 is limited to HTTP communication only. This means we can only use HTTP related bindings.
 
+To support Non-Http protocols in IIS (7 and above), we need to do the following:
+1. Install WAS (Windows Process Activation Service) and "Windows foundation Non-Http Activation component" 
+2. Enable Non-Http protocol support in IIS for your application.
+
 		
 ###  WCF instancing modes 
 
