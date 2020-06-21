@@ -178,7 +178,6 @@ An unhandled exception in the WCF service causes the communication channel to fa
 A **WCF** service should throw only  a **FaultException** (or FaultException<T>) instead of **.Net Exceptions**:
 1. An **unhandled .NET exception** will cause the **channel** between the client and the server to **fault**. Once the channel is in a faulted state we **cannot use** the **client proxy** anymore (i.e. we will have to re-create the proxy). Moreover, the **FaultExceptions** won't cause the communication channel to fault.
 
-2. a **.NET exceptions** are platform specific, only understood by a .NET client, for interoperablity reason we should be throw **FaultExceptions**.
-(example)[18_Throwing_fault_exceptions_from_a_WCF_service]
+2. a **.NET exceptions** are platform specific, only understood by a .NET client, for interoperablity reason we should be throw **FaultExceptions**. [More...](18_Throwing_fault_exceptions_from_a_WCF_service)
 
 
