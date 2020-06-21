@@ -51,13 +51,13 @@ we can also specify the Known types in the config
 
 ### Enable tracing and message logging in wcf
 
-1. Right click on the config file and select "Edit WCF Configuration" option from the context menu. If you don't see this option, click on Tools menu item and then selecct WCF Configuration Editor and then point to the config file. 
+1. Right click on the config file and select "Edit WCF Configuration" option from the context menu. If we don't see this option, click on Tools menu item and then selecct WCF Configuration Editor and then point to the config file. 
 2. Select Diagnostics folder
 3. Click on Enable Log Auto Flush link.
 4. Then click on Enable Message Logging link. This should automatically add file, to which messages will be logged. To enable tracing click on Enable Tracing link.
 5. Expand Diagnostics folder on the left hand side
 6. Select Message Logging item that is present under Diagnostics folder. On the right hand side set LogEntireMessage option to true.
-7. Close Microsoft Service Configuration Editor tool. This will ask you to Save Changes. Click Yes.
+7. Close Microsoft Service Configuration Editor tool. This will ask we to Save Changes. Click Yes.
 
 
 ### MessageContract vs DataContract
@@ -77,7 +77,7 @@ It has the following parameters:
 3. WrapperNamespace
 4. ProtectionLevel
 
-**MessageHeader** attribute is applied on a property of the class that you want to include in the **SOAP header**. 
+**MessageHeader** attribute is applied on a property of the class that we want to include in the **SOAP header**. 
 It has the following parameters:
 1. Name
 2. Namespace
@@ -224,11 +224,38 @@ for instance choosing **basicHttpBinding** binding would use **http** as Transpo
 
 
 
+###  IIS hosting Advantages and disadvantages
+**Advantages**:
+1. No code is required to host the service: The ServiceHost directive in .svc file is responsible for creating an instance of ServiceHost when required. There is no need to write code to instantiate and start ServiceHost, as is the case with self hosting.
 
+2. Automatic message based activation: IIS provides automatic message based activation. This means that the service can be activated on demand. When a message arrives at the service, it then launches itself and fulfils the request. In case of self hosting, the service should always be running.
+
+3. Automatic process recycling: IIS provides the capability of automatic process recycling, if the process is not healthy and if it's taking a long time to service the requests. We don't get automatic process recycling with self hosting.
+
+**Disadvantages**:
+Hosting WCF service in IIS 5.1 and IIS 6.0 is limited to HTTP communication only. This means we can only use HTTP related bindings.
 
 		
+###  WCF instancing modes 
 
+There are 3 instancing modes: 
+1. **PerCall**: A new instance of service object is created for every request, irrespective of whether the request comes from the same client or a different client.
 
+2. **PerSession**: A new instance of the service object is created for each new client session and maintained for the duration of that session.
 
+3. **Single**: A single instance of the service object is created and handles all requests for the lifetime of the application, irrespective of whether the request comes from the same client or a different client.
+
+*How do we specify what instancing mode we want to use?* Use **ServiceBehavior** attribute and specify **InstanceContextMode**.
+
+###  WCF bindings and the impact on message protection
+
+What happens if the binding does not provide **security** and we have explicitly **set ProtectionLevel** other than None : An exception will be thrown. 
+
+In general **ProtectionLevel** parameter is used to enforce the minimum level of **protection required**, If the **binding** does not provide that **minimum level of protection** then an exception will be thrown. 
+
+###  Message Confidentiality and Integrity With Transport Security
+ - Out of the box, **wsHttpBinding** provides **message** based **security**. Message based security automatically **encrypts and signs** the message to provide confidentiality and integrity.We have practically seen this by inspecting the logged messages. 
+ 
+ - Out of the box, **netTcpBinding** provides **transport security**. Even with transport security, all messages are **encrypted and signed**. When we inspect the logged messages,	surprisingly they are in plain text. The reason for this is that, the messages are **encrypted and signed** at the **transport layer**. By the time the message is arrived at the log it is already **decrypted**. Therefore, they appear in **plain text**.
 
 
