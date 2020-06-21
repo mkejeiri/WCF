@@ -239,6 +239,7 @@ To support Non-Http protocols in IIS (7 and above), we need to do the following:
 1. Install WAS (Windows Process Activation Service) and "Windows foundation Non-Http Activation component" 
 2. Enable Non-Http protocol support in IIS for your application.
 
+**Enable net.tcp Protocol on IIS** : Open IIS->"DefaultWebSite" Folder,right click Manage application -advanced settings and set Enable Protocols = http, net.tcp.
 		
 ###  WCF instancing modes 
 
