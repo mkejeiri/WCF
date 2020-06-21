@@ -165,9 +165,20 @@ public class CalculatorService : ICalculatorService
 
 
 
+An unhandled exception in the WCF service causes the communication channel to fault and the session will be lost. Once the communication channel is in faulted state we cannot use the same instance of the proxy class any more. We have to create a new instance of the proxy class.
 
 
+- **BasicHttpBinding** (no sessions): when an unhandled exception occurs, it only faults the server channel, the client proxy is still OK, because channel is not maintaining sessions in BasicHttpBinding, and when the client calls again and it is not expecting the channel to maintain any session.
+
+- **WSHttpBinding** (have secure sessions): in case of an unhandled exception, it faults the server channel, the existing client proxy becomes useless since it is faulted. Further, with **wsHttpBinding** the channel is maintaining a secure session, when the client calls again it expects the channel to maintain the same session. The same session does not exist at the server channel anymore, as the undhandled exception has already torn down the channel and the session.
 
 
+**why can't we simply throw .NET exceptions instead of Fault exceptions?**
+
+A **WCF** service should throw only  a **FaultException** (or FaultException<T>) instead of **.Net Exceptions**:
+1. An **unhandled .NET exception** will cause the **channel** between the client and the server to **fault**. Once the channel is in a faulted state we **cannot use** the **client proxy** anymore (i.e. we will have to re-create the proxy). Moreover, the **FaultExceptions** won't cause the communication channel to fault.
+
+2. a **.NET exceptions** are platform specific, only understood by a .NET client, for interoperablity reason we should be throw **FaultExceptions**.
+(example)[18_Throwing_fault_exceptions_from_a_WCF_service]
 
 
