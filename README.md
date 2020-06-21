@@ -181,3 +181,37 @@ A **WCF** service should throw only  a **FaultException** (or FaultException<T>)
 2. a **.NET exceptions** are platform specific, only understood by a .NET client, for interoperablity reason we should be throw **FaultExceptions**. [More...](18_Throwing_fault_exceptions_from_a_WCF_service)
 
 
+**create a strongly typed SOAP fault**:
+1. Create a class that represents a SOAP fault. Decorate the class with DataContract attribute and the properties with DataMember attribute.
+2. In the service data contract, use FaultContractAttribute to specify which operations can throw which SOAP faults.
+3. In the service implementation create an instance of the strongly typed SOAP fault and throw it using FaultException<T>.
+[More...](19_Creating_and_throwing_strongly_typed_SOAP_faults)
+
+
+**Implementing IErrorHandler interface for Centralized exception handling**
+
+[Code...](20_Centralized_exception_handling_in_WCF_by_implementing_IErrorHandler_interface)
+
+1. Implement IErrorHandler interface, it has 2 methods we need to implementation:
+	a. **ProvideFault** : Gets called sync (first) when there is an unhandled exception or a fault.used map unhandled exception into a generic fault to be returned to the client.
+	
+	b. **HandleError**: Gets called asynchronously after ProvideFault() method is called and the error message is returned to the client. Perfect place to log the exception without blocking the client call.
+	
+
+2. Create a **custom Service Behaviour Attribute** (e.g. GlobalErrorHandlerBehaviourAttribute) to let WCF know that we want to use the GlobalErrorHandler class whenever an unhandled exception occurs
+
+Implements **IServiceBehavior** interface,which has 3 methods (Validate(), AddBindingParameters(), ApplyDispatchBehavior()). The implementation for Validate() and AddBindingParameters() method can be left blank. In the **ApplyDispatchBehavior()** method, we create an instance of the GlobalErrorHandler class and associate the instance with each channelDispatcher.
+
+3. Decorate The Contract Service classwith **GlobalErrorHandlerBehaviourAttribute**
+  
+
+
+### Bindings in WCF	
+
+
+		
+
+
+
+
+
