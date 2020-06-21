@@ -209,16 +209,16 @@ Implements **IServiceBehavior** interface,which has 3 methods (Validate(), AddBi
 ### Bindings in WCF	
 
 The abc's of WCF Services :
-1. Address: Where the WCF is available. 
+1. Address: Where the WCF service is available. 
 2. Binding: type of [binding](https://docs.microsoft.com/en-us/dotnet/framework/wcf/system-provided-bindings) (basicHttpBinding, wsHttpBinding, NetTcpBinding,...) 
-3. Contract: The service contrat (interface) that exposes available operations to a client
+3. Contract: The service contrat (interface) that exposes available operations to the client
 
 **WCF binding**:
 
 It defines how the client need to communicate with the service, the **binding** determines which **Transport Protocol**(http, tcp, namedpipe, msmq, ...), **Message encoding** (text/xml, binary...) and **Protocols**(reliable messaging, transport support,...) to be used.
 for instance choosing **basicHttpBinding** binding would use **http** as Transport Protocol, **xml** as Message encoding and **no reliable** Protocol, whereas using **NetTcpBinding** binding would use **TCP** as as Transport Protocol, **binary** as Message encoding and we could customize **Protocols** to use.
 
-
+[Choosing the right WCF binding](https://weblogs.asp.net/spano/choosing-the-right-wcf-binding)
 
  
 
